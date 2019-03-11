@@ -8,9 +8,13 @@ app.use(cors());
 
 // Routes
 let vikarier = require('./routes/vikarier');
+let bokningar = require('./routes/bokningar');
 
 app.route('/vikarier')
 .get(vikarier.get)
+
+app.route('/bokningar')
+.get(bokningar.get)
 
 // Koppling till databas
 mongoose.connect(`mongodb+srv://poolare:${process.env.PASSWORD}@poolare-pc7ip.mongodb.net/vikarier?retryWrites=true`, {useNewUrlParser: true})
@@ -20,7 +24,6 @@ mongoose.connect(`mongodb+srv://poolare:${process.env.PASSWORD}@poolare-pc7ip.mo
 .catch(err => {
   console.error(err);
 });
-
 
 // Port
 const port = 3000;

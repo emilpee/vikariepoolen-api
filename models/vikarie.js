@@ -24,16 +24,6 @@ let vikarieSchema = new Schema ({
         type: Array,
         required: false
     },
-    datum: {
-        dag: {
-            type: Number,
-            required: true
-        },
-        manad: {
-            type: String,
-            required: true
-        }
-    },
     kompetens: {
         type: String,
         required: true
