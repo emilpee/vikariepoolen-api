@@ -10,3 +10,16 @@ module.exports.get = async(req, res) => {
         res.status(500).send(err);
     }
 }
+
+// POST
+module.exports.post = async(req,res,next) => {
+    try {
+      let nyVikarie = await VikarieModel.create(req.body);
+      res.status(200).send(nyVikarie)
+    }
+  
+    catch(err) {
+      console.error(err);
+      res.status(400).send(err);
+    }
+  };

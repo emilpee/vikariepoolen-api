@@ -26,7 +26,7 @@ let bokningSchema = new Schema ({
         type: String,
         required: true,
     },
-    plats: {
+    skola: {
         type: String,
         required: true
     }

@@ -12,17 +12,18 @@ let bokningar = require('./routes/bokningar');
 
 app.route('/vikarier')
 .get(vikarier.get)
+.post(vikarier.post)
 
 app.route('/bokningar')
 .get(bokningar.get)
 
 // Koppling till databas
-mongoose.connect(`mongodb+srv://poolare:${process.env.PASSWORD}@poolare-pc7ip.mongodb.net/vikarier?retryWrites=true`, {useNewUrlParser: true})
+mongoose.connect(`mongodb+srv://poolare:${process.env.PASSWORD}@poolare-pc7ip.mongodb.net/vikpoolen?retryWrites=true`, {useNewUrlParser: true})
 .then(() => {
   console.log(`Password OK! You're connected.`)
 })
 .catch(err => {
-  console.error(err);
+  console.error(err.stack);
 });
 
 // Port
