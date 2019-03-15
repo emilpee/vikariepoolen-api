@@ -8,10 +8,6 @@ let bokningSchema = new Schema ({
         type: Object,
         required: true
     },
-    ledig: {
-        type: Boolean,
-        default: true
-    },
     datum: {
         dag: {
             type: Number,

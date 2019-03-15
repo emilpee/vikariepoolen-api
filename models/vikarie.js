@@ -8,6 +8,10 @@ let vikarieSchema = new Schema ({
         type: String,
         required: [true, "Vikarie needs a name."]
     },
+    ledig: {
+        type: Boolean,
+        default: true
+    },
     kommun: {
         type: Array,
         required: true

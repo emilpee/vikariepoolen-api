@@ -13,9 +13,11 @@ let bokningar = require('./routes/bokningar');
 app.route('/vikarier')
 .get(vikarier.get)
 .post(vikarier.post)
+.delete(vikarier.delete)
 
 app.route('/bokningar')
 .get(bokningar.get)
+.post(bokningar.post)
 
 // Koppling till databas
 mongoose.connect(`mongodb+srv://poolare:${process.env.PASSWORD}@poolare-pc7ip.mongodb.net/vikpoolen?retryWrites=true`, {useNewUrlParser: true})
