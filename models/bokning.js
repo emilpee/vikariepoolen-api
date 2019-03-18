@@ -9,12 +9,12 @@ let bokningSchema = new Schema ({
         required: true
     },
     datum: {
-        dag: {
-            type: Number,
+        fran: {
+            type: Date,
             required: true
         },
-        manad: {
-            type: String,
+        till: {
+            type: Date,
             required: true
         }
     },

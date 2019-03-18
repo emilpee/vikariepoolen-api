@@ -24,10 +24,6 @@ let vikarieSchema = new Schema ({
         type: Array,
         required: true
     },
-    intressen: {
-        type: Array,
-        required: false
-    },
     kompetens: {
         type: String,
         required: true
