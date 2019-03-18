@@ -11,7 +11,6 @@ let vikarier = require('./routes/vikarier');
 let bokningar = require('./routes/bokningar');
 let auth = require('./routes/auth');
 let admins = require('./routes/admins');
-let items = require('./routes/items')
 
 app.route('/vikarier')
 .get(vikarier.get)
@@ -29,9 +28,6 @@ app.route('/auth')
 
 app.route('/admins')
 .post(admins.post)
-
-app.route('/items')
-.get(items.get)
 
 // Koppling till databas
 mongoose.connect(`mongodb+srv://poolare:${process.env.PASSWORD}@poolare-pc7ip.mongodb.net/vikpoolen?retryWrites=true`, {useNewUrlParser: true})
