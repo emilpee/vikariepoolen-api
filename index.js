@@ -13,6 +13,8 @@ let bokningar = require('./routes/bokningar');
 app.route('/vikarier')
 .get(vikarier.get)
 .post(vikarier.post)
+
+app.route('/vikarier/:id')
 .delete(vikarier.delete)
 
 app.route('/bokningar')

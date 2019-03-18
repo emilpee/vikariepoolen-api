@@ -27,7 +27,7 @@ module.exports.post = async(req,res,next) => {
 // DELETE
 module.exports.delete = async (req, res) => {
     try {
-      res.status(200).send( await VikarieModel.deleteOne({_id: req.params.id}))
+      res.status(200).send( await VikarieModel.findOneAndDelete({_id: req.params.id}))
   } catch(err) {
       res.status(500).send(err.stack);
   }
