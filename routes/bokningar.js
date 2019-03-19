@@ -24,8 +24,8 @@ module.exports.post = async(req, res) => {
         let bokning = {
             vikarie: vikarie,
             datum: {
-                dag: req.body.datum.dag,
-                manad: req.body.datum.manad    
+                fran: req.body.datum.fran,
+                till: req.body.datum.till 
             },
             bokare: req.body.bokare, 
             skola: req.body.skola
