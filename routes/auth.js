@@ -6,28 +6,29 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Admin = require('../models/Admin');
 
-// GET
+// POST
 module.exports.post = async (req, res) => {
+    try {
+        // Kolla om användare existerar
+        let admin = await Admin.findOne({ username: req.body.username });
 
-    // Kolla om användare existerar
-    let admin = await Admin.findOne({ username: req.body.username });
+        // Kolla om lösenord matchar det krypterade
+        let match = await bcrypt.compare(req.body.password, admin.password)
 
-    // Kolla om lösenord matchar det krypterade
-    let match = await bcrypt.compare(req.body.password, admin.password)
-    console.log(admin);
-    console.log(match);
+        console.log(admin);
+        // Returnera JWT om match
+        if (match) {
+            const token = jwt.sign({ uid: admin.uid }, process.env.SECRET )
+            res.status(200).send({ username: admin.username, authToken: token })
+        } else {
+        // Om inte, skicka tillbaka 402 
+            res.status(402).send('Tyvärr, du saknar behörigheter för admin.')
+        }
 
-    // Returnera JWT om match
-    if (match) {
-        const token = jwt.sign({ uid: admin.uid }, process.env.SECRET )
-        res.status(200).send({ username: admin.username, authToken: token })
+    } catch(err) {
+        console.error(err);
     }
-    // Om inte, skicka tillbaka 402 
-    else {
-        res.status(402).send('Tyvärr, du saknar behörigheter för admin.')
-    }
-    
-}
+} 
 
 module.exports.isAdmin = async (authtoken) => {
     
@@ -46,14 +47,12 @@ module.exports.isAdmin = async (authtoken) => {
 }
 
 module.exports.verifyToken = async (token) => {
-
     try {
-        // Verify JWT with process.env.SECRET, return token
         let response = await jwt.verify(token, process.env.SECRET)
         return response.uid;
     
     } catch(err){
-        // if error = not valid token, return 'not valid token.'
+        // Om error, så är token inte giltig
         console.error(err);
         return false;
     }

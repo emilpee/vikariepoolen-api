@@ -16,7 +16,6 @@ module.exports.get = async(req, res) => {
 module.exports.post = async(req, res) => {
 
     try {
-
         let vikarie = await VikarieModel.findById(req.body.vikarie);
         console.log(req.body);
     
@@ -42,7 +41,6 @@ module.exports.post = async(req, res) => {
         res.status(200).send(newBokning)
 
     } catch(err) {
-
         console.log(err.stack);
 
     }
