@@ -15,7 +15,6 @@ module.exports.post = async (req, res) => {
         // Kolla om lösenord matchar det krypterade
         let match = await bcrypt.compare(req.body.password, admin.password)
 
-        console.log(admin);
         // Returnera JWT om match
         if (match) {
             const token = jwt.sign({ uid: admin.uid }, process.env.SECRET )

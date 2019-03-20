@@ -34,7 +34,11 @@ module.exports.post = async(req, res) => {
 
         // Uppdatera status på bokad vikarie
         await VikarieModel.findOneAndUpdate({_id: req.body.vikarie}, {
-            ledig: false
+            ledig: false,
+            datum: {
+                fran: req.body.datum.fran,
+                till: req.body.datum.till
+            }
         }) 
 
         // Skicka till front end

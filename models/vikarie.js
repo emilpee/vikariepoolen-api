@@ -12,6 +12,16 @@ let vikarieSchema = new Schema ({
         type: Boolean,
         default: true
     },
+    datum: {
+        fran: {
+            type: String,
+            default: ''
+        },
+        till: {
+            type: String,
+            default: ''
+        }
+    },
     kommun: {
         type: Array,
         required: true
