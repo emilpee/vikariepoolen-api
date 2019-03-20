@@ -49,3 +49,12 @@ module.exports.post = async(req, res) => {
 
     }
 }
+
+// DELETE
+module.exports.delete = async (req, res) => {
+    try {
+      res.status(200).send( await BokningModel.findOneAndDelete({_id: req.params.id}))
+  } catch(err) {
+      res.status(500).send(err.stack);
+  }
+}

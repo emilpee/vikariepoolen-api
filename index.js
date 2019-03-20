@@ -19,6 +19,9 @@ app.route('/vikarier')
 app.route('/vikarier/:id')
 .delete(vikarier.delete)
 
+app.route('/bokningar/:id')
+.delete(bokningar.delete)
+
 app.route('/bokningar')
 .get(bokningar.get)
 .post(bokningar.post)
